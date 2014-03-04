@@ -1,6 +1,6 @@
 import pycurl, json, StringIO
 
-data = json.dumps({"name": "test_repo", "description": "Some test repo"})
+data = json.dumps({"image_url": "http://moviecroft.com/wp-content/uploads/2013/11/cute-earphones-anime-nyashka-kawaii.jpg", "api_key": "123"})
 url = 'http://api.mrisa.mage.me.uk/search'
 
 storage = StringIO.StringIO()
