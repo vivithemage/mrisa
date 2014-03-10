@@ -1,6 +1,7 @@
 import pycurl, json
 from flask import Flask, url_for, json, request
 from StringIO import StringIO
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -12,7 +13,8 @@ def mrisa_main():
     if request.headers['Content-Type'] == 'application/json':
         client_json = json.dumps(request.json)
         client_data = json.loads(client_json)
-        return retrieve(client_data['image_url'])
+        code = retrieve(client_data['image_url'])
+        return google_image_results_parser(code)
         #return "JSON Message: " + json.dumps(request.json)
     else:
         json_error_message = "Requests need to be in json format. Please make sure the header is 'application/json' and the json is valid."
@@ -25,12 +27,27 @@ def retrieve(image_url):
     conn = pycurl.Curl()
     conn.setopt(conn.URL, full_url)
     conn.setopt(conn.FOLLOWLOCATION, 1)
-    ## Need to set the useragent as an actual client rather than just curl.
     conn.setopt(conn.USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11')
     conn.setopt(conn.WRITEFUNCTION, returned_code.write)
     conn.perform()
     conn.close()
     return returned_code.getvalue()
+
+# Parses returned code (html,js,css) and assigns to array
+def google_image_results_parser(code):
+    soup = BeautifulSoup(code)
+    links = 'none'
+
+    for li in soup.findAll('li', attrs={'class':'g'}):
+        sLink = li.find('a')
+        print sLink['href']
+        #sSpan = li.find('span', attrs={'class':'st'})
+        #print sSpan
+
+    return links
+
+def build_json_return():
+    return 1
 
 if __name__ == '__main__':
     app.debug = True
