@@ -36,15 +36,13 @@ def retrieve(image_url):
 # Parses returned code (html,js,css) and assigns to array
 def google_image_results_parser(code):
     soup = BeautifulSoup(code)
-    links = 'none'
-
+    links = 'complete'
+    href_list=[]
     for li in soup.findAll('li', attrs={'class':'g'}):
         sLink = li.find('a')
-        print sLink['href']
-        #sSpan = li.find('span', attrs={'class':'st'})
-        #print sSpan
+        href_list.append(sLink['href'])
 
-    return links
+    return json.dumps(href_list)
 
 def build_json_return():
     return 1
