@@ -25,7 +25,7 @@ def retrieve(image_url):
     returned_code = StringIO()
     full_url = 'https://www.google.com/searchbyimage?&image_url=' + image_url
     conn = pycurl.Curl()
-    conn.setopt(conn.URL, full_url)
+    conn.setopt(conn.URL, str(full_url))
     conn.setopt(conn.FOLLOWLOCATION, 1)
     conn.setopt(conn.USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11')
     conn.setopt(conn.WRITEFUNCTION, returned_code.write)
