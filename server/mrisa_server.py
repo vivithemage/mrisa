@@ -33,19 +33,37 @@ def retrieve(image_url):
     conn.close()
     return returned_code.getvalue()
 
-# Parses returned code (html,js,css) and assigns to array
+# Parses returned code (html,js,css) and assigns to array using beautifulsoup
 def google_image_results_parser(code):
     soup = BeautifulSoup(code)
-    links = 'complete'
-    href_list=[]
+
+    # initialize 2d array
+    whole_array = {'links':[],
+                   'description':[],
+                   'title':[],
+                   'result_qty':[]}
+
+    # Links for all the search results
     for li in soup.findAll('li', attrs={'class':'g'}):
         sLink = li.find('a')
-        href_list.append(sLink['href'])
+        whole_array['links'].append(sLink['href'])
 
-    return json.dumps(href_list)
+    # Search Result Description
+    for desc in soup.findAll('span', attrs={'class':'st'}):
+        whole_array['description'].append(desc.get_text())
 
-def build_json_return():
-    return 1
+    # Search Result Title
+    for title in soup.findAll('h3', attrs={'class':'r'}):
+        whole_array['title'].append(title.get_text())
+
+    # Number of results
+    for result_qty in soup.findAll('div', attrs={'id':'resultStats'}):
+        whole_array['result_qty'].append(result_qty.get_text())
+
+    return build_json_return(whole_array)
+
+def build_json_return(whole_array):
+    return json.dumps(whole_array)
 
 if __name__ == '__main__':
     app.debug = True
