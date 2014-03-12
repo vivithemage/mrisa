@@ -1,9 +1,7 @@
 import pycurl, json, StringIO
 
-data = json.dumps({"image_url": "http://moviecroft.com/wp-content/uploads/2013/11/cute-earphones-anime-nyashka-kawaii.jpg", "api_key": "123"})
-#url = 'http://api.mrisa.mage.me.uk/search'
-url = 'http://v1.mage.me.uk/search'
-#url = 'http://localhost/search'
+data = json.dumps({"image_url": "http://upload.wikimedia.org/wikipedia/commons/2/29/Voyager_spacecraft.jpg"})
+url = 'http://localhost/search'
 
 storage = StringIO.StringIO()
 
