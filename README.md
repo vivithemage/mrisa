@@ -35,5 +35,10 @@ curl -X POST http://localhost:5000/search
 
 **Response Example**
 ```shell
-TODO
+{
+    "descriptions": ["test description", "..."],
+    "links": ["http://test_link.com", "..."],
+    "similar_images": ["http://test_image.jpg", "..."],
+    "titles": ["test title", "..."]
+}
 ```
