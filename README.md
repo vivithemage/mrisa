@@ -1,6 +1,6 @@
 MRISA
 =======
-MRISA (**M**eta **R**everse **I**mage **S**earch **A**PI) is a RESTful API which takes an image URL, does a reverse image search, and returns a JSON array with the search results.
+MRISA (**M**eta **R**everse **I**mage **S**earch **A**PI) is a RESTful API which takes an image URL, does a reverse Google image search, and returns a JSON array with the search results.
 
 ## Usage
 Install the necessary dependencies:
