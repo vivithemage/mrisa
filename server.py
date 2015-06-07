@@ -62,4 +62,6 @@ def parseResults(code):
     return json.dumps(results)
 
 if __name__ == '__main__':
+    # app.debug = True    # For hot-reload on save.
+
     app.run(host='0.0.0.0')
