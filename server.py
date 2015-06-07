@@ -23,6 +23,10 @@ def doImageSearch(image_url):
 
     returned_code = StringIO()
     full_url = SEARCH_URL + image_url
+
+    if app.debug:
+        print 'POST: ' + full_url
+
     conn = pycurl.Curl()
     conn.setopt(conn.URL, str(full_url))
     conn.setopt(conn.FOLLOWLOCATION, 1)
