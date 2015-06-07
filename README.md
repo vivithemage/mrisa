@@ -8,9 +8,9 @@ Install the necessary dependencies:
 pip install flask pycurl beautifulsoup4
 ```
 
-From the project root directory, start the server with:
+Start the server with:
 ```
-python mrisa/mrisa_server.py
+python mrisa/server.py
 ```
 
 ## API
