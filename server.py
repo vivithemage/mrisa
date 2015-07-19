@@ -1,3 +1,4 @@
+import argparse
 import pycurl
 import json
 from flask import Flask, url_for, json, request
@@ -65,7 +66,16 @@ def parseResults(code):
 
     return json.dumps(results)
 
-if __name__ == '__main__':
-    # app.debug = True    # For hot-reload on save.
+def main():
+    parser = argparse.ArgumentParser(description='Meta Reverse Image Search API')
+    parser.add_argument('-p', '--port', type=int, default=5000, help='port number')
+    parser.add_argument('--debug', action='store_true', help='enable debug mode')
+    args = parser.parse_args()
+    
+    if args.debug:
+        app.debug = True
+    
+    app.run(host='0.0.0.0', port=args.port)
 
-    app.run(host='0.0.0.0')
+if __name__ == '__main__':
+    main()
