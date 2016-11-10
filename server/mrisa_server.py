@@ -41,6 +41,7 @@ def google_image_results_parser(code):
     whole_array = {'links':[],
                    'description':[],
                    'title':[],
+                   'guess':[],
                    'result_qty':[]}
 
     # Links for all the search results
@@ -55,6 +56,10 @@ def google_image_results_parser(code):
     # Search Result Title
     for title in soup.findAll('h3', attrs={'class':'r'}):
         whole_array['title'].append(title.get_text())
+
+    # Best Guess
+    for guess in soup.findAll('a', attrs={'class':'_gUb'}):
+        whole_array['guess'].append(guess.get_text())
 
     # Number of results
     for result_qty in soup.findAll('div', attrs={'id':'resultStats'}):
