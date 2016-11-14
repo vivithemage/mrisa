@@ -23,7 +23,7 @@ def mrisa_main():
 # retrieves the reverse search html for processing. This actually does the reverse image lookup
 def retrieve(image_url):
     returned_code = StringIO()
-    full_url = 'https://www.google.com/searchbyimage?&image_url=' + image_url
+    full_url = 'http://stu.baidu.com/i?objurl=' + image_url + '&filename=&rt=0&rn=10&ftn=searchstu&ct=1&stt=1&tn=faceresult'
     conn = pycurl.Curl()
     conn.setopt(conn.URL, str(full_url))
     conn.setopt(conn.FOLLOWLOCATION, 1)
@@ -41,6 +41,7 @@ def google_image_results_parser(code):
     whole_array = {'links':[],
                    'description':[],
                    'title':[],
+                   'guess':[],
                    'result_qty':[]}
 
     # Links for all the search results
@@ -49,15 +50,19 @@ def google_image_results_parser(code):
         whole_array['links'].append(sLink['href'])
 
     # Search Result Description
-    for desc in soup.findAll('span', attrs={'class':'st'}):
+    for desc in soup.findAll('div', attrs={'class':'source-card-topic-content'}):
         whole_array['description'].append(desc.get_text())
 
     # Search Result Title
-    for title in soup.findAll('h3', attrs={'class':'r'}):
+    for title in soup.findAll('div', attrs={'class':'source-card-topic-title'}):
         whole_array['title'].append(title.get_text())
 
+    # Best Guess
+    for guess in soup.findAll('div', attrs={'class':'guess-info-text'}):
+        whole_array['guess'].append(guess.get_text())
+
     # Number of results
-    for result_qty in soup.findAll('div', attrs={'id':'resultStats'}):
+    for result_qty in soup.findAll('div', attrs={'class':'guess-info-more-info'}):
         whole_array['result_qty'].append(result_qty.get_text())
 
     return build_json_return(whole_array)
