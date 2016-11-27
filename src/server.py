@@ -49,8 +49,8 @@ def parseResults(code):
         'similar_images': []
     }
 
-    for li in soup.findAll('li', attrs={'class':'g'}):
-        sLink = li.find('a')
+    for div in soup.findAll('div', attrs={'class':'g'}):
+        sLink = div.find('a')
         results['links'].append(sLink['href'])
 
     for desc in soup.findAll('span', attrs={'class':'st'}):
@@ -71,10 +71,10 @@ def main():
     parser.add_argument('-p', '--port', type=int, default=5000, help='port number')
     parser.add_argument('--debug', action='store_true', help='enable debug mode')
     args = parser.parse_args()
-    
+
     if args.debug:
         app.debug = True
-    
+
     app.run(host='0.0.0.0', port=args.port)
 
 if __name__ == '__main__':
