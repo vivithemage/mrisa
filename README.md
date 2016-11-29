@@ -5,7 +5,7 @@ MRISA (**M**eta **R**everse **I**mage **S**earch **A**PI) is a RESTful API which
 ## Usage
 Install the necessary dependencies:
 ```
-pip install flask pycurl beautifulsoup4
+pip install certifi flask pycurl beautifulsoup4
 ```
 
 Start the server with:
