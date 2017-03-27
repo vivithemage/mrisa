@@ -2,8 +2,15 @@ import argparse
 import pycurl
 import json
 from flask import Flask, url_for, json, request
-from StringIO import StringIO
+python3 = False
+try:
+    from StringIO import StringIO
+except ImportError:
+    python3 = True
+    import io as bytesIOModule
 from bs4 import BeautifulSoup
+if python3:
+    import certifi
 
 SEARCH_URL = 'https://www.google.com/searchbyimage?&image_url='
 
@@ -22,25 +29,33 @@ def search():
 def doImageSearch(image_url):
     """Perform the image search and return the HTML page response."""
 
-    returned_code = StringIO()
+    if python3:
+        returned_code = bytesIOModule.BytesIO()
+    else:
+        returned_code = StringIO()
     full_url = SEARCH_URL + image_url
 
     if app.debug:
-        print 'POST: ' + full_url
+        print('POST: ' + full_url)
 
     conn = pycurl.Curl()
+    if python3:
+        conn.setopt(conn.CAINFO, certifi.where())
     conn.setopt(conn.URL, str(full_url))
     conn.setopt(conn.FOLLOWLOCATION, 1)
     conn.setopt(conn.USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11')
     conn.setopt(conn.WRITEFUNCTION, returned_code.write)
     conn.perform()
     conn.close()
-    return returned_code.getvalue()
+    if python3:
+        return returned_code.getvalue().decode('UTF-8')
+    else:
+        return returned_code.getvalue()
 
 def parseResults(code):
     """Parse/Scrape the HTML code for the info we want."""
 
-    soup = BeautifulSoup(code)
+    soup = BeautifulSoup(code, 'html.parser')
 
     results = {
         'links': [],
