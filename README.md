@@ -10,7 +10,7 @@ pip install certifi flask pycurl beautifulsoup4
 
 Start the server with:
 ```
-python mrisa/server.py
+python src/server.py
 ```
 
 ## API

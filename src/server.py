@@ -64,7 +64,7 @@ def parseResults(code):
         'similar_images': []
     }
 
-    for div in soup.findAll('div', attrs={'class':'g'}):
+    for div in soup.findAll('div', attrs={'class':'rc'}):
         sLink = div.find('a')
         results['links'].append(sLink['href'])
 
