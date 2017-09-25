@@ -61,10 +61,11 @@ def parseResults(code):
         'links': [],
         'descriptions': [],
         'titles': [],
-        'similar_images': []
+        'similar_images': [],
+        'best_guess': ''
     }
 
-    for div in soup.findAll('div', attrs={'class':'g'}):
+    for div in soup.findAll('div', attrs={'class':'rc'}):
         sLink = div.find('a')
         results['links'].append(sLink['href'])
 
@@ -78,6 +79,9 @@ def parseResults(code):
         tmp = json.loads(similar_image.get_text())
         img_url = tmp['ou']
         results['similar_images'].append(img_url)
+
+    for best_guess in soup.findAll('a', attrs={'class':'_gUb'}):
+      results['best_guess'] = best_guess.get_text()
 
     return json.dumps(results)
 

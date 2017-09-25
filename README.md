@@ -10,7 +10,7 @@ pip install certifi flask pycurl beautifulsoup4
 
 Start the server with:
 ```
-python mrisa/server.py
+python src/server.py
 ```
 
 ## API
@@ -36,6 +36,7 @@ curl -X POST http://localhost:5000/search
 **Response Example**
 ```shell
 {
+    "best_guess": "best guess for image",
     "descriptions": ["test description", "..."],
     "links": ["http://test_link.com", "..."],
     "similar_images": ["http://test_image.jpg", "..."],
