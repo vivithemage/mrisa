@@ -80,7 +80,7 @@ def parseResults(code):
         img_url = tmp['ou']
         results['similar_images'].append(img_url)
 
-    for best_guess in soup.findAll('a', attrs={'class':'_gUb'}):
+    for best_guess in soup.findAll('a', attrs={'class':'fKDtNb'}):
       results['best_guess'] = best_guess.get_text()
 
     return json.dumps(results)
