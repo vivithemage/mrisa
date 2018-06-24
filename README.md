@@ -1,6 +1,7 @@
 # MRISA
 
-=======
+---
+
 MRISA (**M**eta **R**everse **I**mage **S**earch **A**PI) is a RESTful API which takes an image URL, does a reverse Google image search, and returns a JSON array with the search results.
 
 ## Usage
@@ -8,7 +9,7 @@ MRISA (**M**eta **R**everse **I**mage **S**earch **A**PI) is a RESTful API which
 Install the necessary dependencies:
 
 ```shell
-pip install certifi flask pycurl beautifulsoup4
+pip install certifi flask pycurl beautifulsoup4 flask_cors
 ```
 
 Or
@@ -46,7 +47,8 @@ curl -X POST http://localhost:5000/search \
     -H "Content-Type: application/json" \
     -d '{
         "image_url":
-            "http://placehold.it/350x150.png"
+            "http://placehold.it/350x150.png",
+        "resized_images":true
         }'
 ```
 
@@ -62,7 +64,8 @@ curl -X POST http://localhost:5000/search \
     xhr.setRequestHeader("Content-Type","application/json");
 
     data= {
-        "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg"
+        "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
+        "resized_images":false // Or true
         };
 
     json = JSON.stringify(data);
@@ -216,9 +219,13 @@ Shortened to 3 resized_image objects out of 99
 #### CURL request
 
 ```shell
-
-
-
+curl -X POST http://localhost:5000/search \
+    -H "Content-Type: application/json" \
+    -d '{
+        "image_url":
+            "image_url",
+        "resized_images":true
+        }'
 ```
 
 ### Response Format
@@ -279,6 +286,16 @@ URLs of similar images (According to [Google](https://google.com))
 List of titles from different sources (Related to that Image)
 
 ## Resized Images (The [same](https://github.com/phanirithvij/mrisa#arguments) Image in different Sizes and from different Sources)
+
+Request should contain
+
+```javascript
+
+    "resized_images":true
+
+```
+
+[Usage Example](https://github.com/phanirithvij/mrisa#curl)
 
 ```python
 "resized_images"
