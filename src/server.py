@@ -2,6 +2,7 @@ import argparse
 import pycurl
 import json
 from flask import Flask, url_for, json, request
+from flask_cors import CORS, cross_origin
 python3 = False
 try:
     from StringIO import StringIO
@@ -24,7 +25,11 @@ def search():
     client_json = json.dumps(request.json)
     client_data = json.loads(client_json)
     code = doImageSearch(SEARCH_URL + client_data['image_url'])
-    return parseResults(code)
+    
+    if 'resized_images' in client_data and client_data['resized_images'] == True:
+        return parseResults(code, resized=True)
+    else:        
+        return parseResults(code)
 
 def doImageSearch(full_url):
     # Directly passing full_url
@@ -53,7 +58,7 @@ def doImageSearch(full_url):
     else:
         return returned_code.getvalue()
 
-def parseResults(code):
+def parseResults(code, resized=False):
     """Parse/Scrape the HTML code for the info we want."""
 
     soup = BeautifulSoup(code, 'html.parser')
@@ -63,8 +68,7 @@ def parseResults(code):
         'descriptions': [],
         'titles': [],
         'similar_images': [],
-        'best_guess': '',
-        'resized_images':[]
+        'best_guess': ''
     }
 
     for div in soup.findAll('div', attrs={'class':'rc'}):
@@ -85,7 +89,8 @@ def parseResults(code):
     for best_guess in soup.findAll('a', attrs={'class':'fKDtNb'}):
       results['best_guess'] = best_guess.get_text()
 
-    results['resized_images'] = getDifferentSizes(soup)
+    if resized:
+        results['resized_images'] = getDifferentSizes(soup)
 
     print("Successful search")
 
@@ -103,7 +108,7 @@ def getDifferentSizes(soup):
         'rh': 'resource_host',
         'ru': 'resource_url',
         'rid': 'SOME_ID_USED_BY_GOOGLE',
-        'ou': 'original_url of image',
+        'ou': 'original_url of image
         'oh': 'orginal_height',
         'ow': 'original_width',
         'ity': 'image type',
@@ -155,11 +160,16 @@ def getDifferentSizes(soup):
     
     allsizes = False
 
-    if span.a.get_text() == "All sizes":
-        allsizes = True
-    else:
-        print("not all sizes")
-        print(span)
+    try:
+
+        if span.a.get_text() == "All sizes":
+            allsizes = True
+        else:
+            print("not all sizes")
+            print(span)
+    except Exception as e:
+        print(str(e))
+        return [{'error':'500','details':'no_images_found'}]
 
     if allsizes:
         new_url = "https://google.co.in" + span.a['href']
@@ -179,16 +189,25 @@ def getDifferentSizes(soup):
 
     return results
 
-def main():
+def main(search):
     parser = argparse.ArgumentParser(description='Meta Reverse Image Search API')
     parser.add_argument('-p', '--port', type=int, default=5000, help='port number')
     parser.add_argument('--debug', action='store_true', help='enable debug mode')
+    parser.add_argument('-c','--cors', action='store_true', default=False, help="enable cross-origin requests")
     args = parser.parse_args()
 
     if args.debug:
         app.debug = True
+    
+    if args.cors:
+        CORS(app, resources=r'/search/*')
+        app.config['CORS_HEADERS'] = 'Content-Type'
+        
+        search = cross_origin(search)
+        print(" * Running with CORS enabled")
+
 
     app.run(host='0.0.0.0', port=args.port)
 
 if __name__ == '__main__':
-    main()
+    main(search)

@@ -278,7 +278,7 @@ URLs of similar images (According to [Google](https://google.com))
 
 List of titles from different sources (Related to that Image)
 
-## Resized Images (The [same](https://github.com/vivithemage/mrisa#url) Image in different Sizes and from different Sources)
+## Resized Images (The [same](https://github.com/phanirithvij/mrisa#arguments) Image in different Sizes and from different Sources)
 
 ```python
 "resized_images"
@@ -298,3 +298,13 @@ List of titles from different sources (Related to that Image)
     's'  : 'summary',
 
 ```
+
+## CORS Support
+
+```shell
+
+    python src/server.py -c # or --cors
+
+```
+
+Will enable users to access API from other websites
