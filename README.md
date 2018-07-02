@@ -81,6 +81,26 @@ curl -X POST http://localhost:5000/search \
 
 ```
 
+#### Python request example
+
+```python
+import requests, json
+
+url = "http://localhost:5000/search"
+
+data = {
+    "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
+    "resized_images":False # Or true
+}
+
+
+headers = {'Content-type': 'application/json'}
+r = requests.post(url, headers=headers, data=json.dumps(data))
+
+#r.json to get the response as json
+print(r.json())
+```
+
 ### Response Example (for the above request)
 
 Shortened to 3 resized_image objects out of 99
