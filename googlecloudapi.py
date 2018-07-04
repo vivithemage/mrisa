@@ -88,7 +88,7 @@ def getCloudAPIDetails(image_path):
         ]
     }
 
-    image_dataURI = basesix4(image_path)
+    image_dataURI = basesix4(image_path).decode('utf-8')
 
     data["requests"][0]["image"]["content"] = image_dataURI
 
