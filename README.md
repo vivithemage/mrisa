@@ -361,16 +361,23 @@ The returned `json` response can be used to detect:
 
 - Labels from an image
 
-- Visually similar Images
-
 - Text from the image and Where it's located
     ([ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) languages supported by Google)
 
 - Web entries
+  - Visually similar Images
 
 - Dominant Colors from the Image
 
 - Safe Search Level
+
+- Landmark detection
+
+- Face detection (emotions etc..)
+
+- Logo detection
+
+- Crop Hints for the Image
 
 > :warning:
 > Using `"cloud_api":true` will only return data from Google's vision API but no more
