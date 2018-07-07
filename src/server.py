@@ -173,7 +173,7 @@ def getDifferentSizes(soup):
 def main():
     parser = argparse.ArgumentParser(description='Meta Reverse Image Search API')
     parser.add_argument('-p', '--port', type=int, default=5000, help='port number')
-    parser.add_argument('--debug', action='store_true', help='enable debug mode')
+    parser.add_argument('-d','--debug', action='store_true', help='enable debug mode')
     parser.add_argument('-c','--cors', action='store_true', default=False, help="enable cross-origin requests")
     args = parser.parse_args()
 
