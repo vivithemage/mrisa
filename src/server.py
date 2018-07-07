@@ -25,10 +25,12 @@ def search():
         return "Requests must be in JSON format. Please make sure the header is 'application/json' and the JSON is valid."
     client_json = json.dumps(request.json)
     client_data = json.loads(client_json)
-    if 'google_api' in client_data and client_data['google_api'] == True:
+
+    if 'cloud_api' in client_data and client_data['cloud_api'] == True:
         saveImage(client_data['image_url'])
         data = getCloudAPIDetails("./default.jpg")
         return jsonify(data)
+
     else:
         code = doImageSearch(SEARCH_URL + client_data['image_url'])
         
@@ -130,34 +132,7 @@ def getDifferentSizes(soup):
         'rt': 'UNKNOWN TERM',
         'isu': 'resource_host', # (UNKNOWN TERM)
     }
-    
-    eg
-        For resized image results of 'http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg'
-
-        One of the resized_image object is
-
-        {
-            'oh': 816,
-            'rt': 0,
-            'ow': 550,
-            'th': 274,
-            'ity': 'jpg',
-            'rid': 'RF2Oq8Gyt9e9kM',
-            'itg': 1,
-            'tu': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX2udEvVE5OGJmKdQj-N0raJ0E2cvDOgDM-o1oFUBHgjBRQXez',
-            'pt': 'Lists: Rankings About Everything,
-            Voted On By Everyone | Ultimate ...',
-            'rh': 'pinterest.co.uk',
-            'sc': 1,
-            'tw': 184,
-            'st': 'Pinterest',
-            'ou': 'https://i.pinimg.com/originals/12/0e/35/120e357ac20f74540b060d1952aef6fa.jpg',
-            'isu': 'pinterest.co.uk',
-            'ru': 'https://www.pinterest.co.uk/pin/296393219206617682/',
-            'id': 'bCuMY30P5vt6vM:',
-            's': 'Lists: Rankings About Everything,Voted On By Everyone. Marvel NowMarvel  Comics OnlineMarvel Graphic NovelsSpiderman 1Ultimate ...'
-        }
-        
+      
     """
 
     region = soup.find('div',{"class":"O1id0e"})
@@ -178,7 +153,7 @@ def getDifferentSizes(soup):
         return [{'error':'500','details':'no_images_found'}]
 
     if allsizes:
-        new_url = "https://google.co.in" + span.a['href']
+        new_url = "https://google.com" + span.a['href']
 
     resized_images_page = doImageSearch(new_url)
 
@@ -195,7 +170,7 @@ def getDifferentSizes(soup):
 
     return results
 
-def main(search):
+def main():
     parser = argparse.ArgumentParser(description='Meta Reverse Image Search API')
     parser.add_argument('-p', '--port', type=int, default=5000, help='port number')
     parser.add_argument('--debug', action='store_true', help='enable debug mode')
@@ -209,6 +184,7 @@ def main(search):
         CORS(app, resources=r'/search/*')
         app.config['CORS_HEADERS'] = 'Content-Type'
 
+        global search
         search = cross_origin(search)
         print(" * Running with CORS enabled")
 
@@ -216,4 +192,4 @@ def main(search):
     app.run(host='0.0.0.0', port=args.port)
     
 if __name__ == '__main__':
-    main(search)
+    main()

@@ -64,7 +64,7 @@ curl -X POST http://localhost:5000/search \
     xhr.setRequestHeader("Content-Type","application/json");
 
     data= {
-        "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
+        "image_url":"http://placehold.it/350x150.png",
         "resized_images":false // Or true
         };
 
@@ -89,8 +89,9 @@ import requests, json
 url = "http://localhost:5000/search"
 
 data = {
-    "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
-    "resized_images":False # Or true
+    "image_url":"http://placehold.it/350x150.png",
+    "resized_images":True, # Or False
+    "cloud_api":True
 }
 
 
@@ -99,11 +100,13 @@ r = requests.post(url, headers=headers, data=json.dumps(data))
 
 #r.json to get the response as json
 print(r.json())
+
+#r.text for no u'' characters
 ```
 
 ### Response Example (for the above request)
 
-Shortened to 3 resized_image objects out of 99
+Shortened to 3 resized_image objects out of 20
 
 <details>
 
@@ -114,121 +117,125 @@ Shortened to 3 resized_image objects out of 99
 ```shell
 
 {
-    "best_guess": "ultimative spider man comic",
+    "best_guess": "placeholder img",
     "descriptions": [
-        "Ultimate Spider-Man is a superhero comic book series that was published by Marvel Comics from 2000 to 2009. The series is a modernized re-imagining of\u00a0...",
-        "In 2000, Marvel embarked on a bold new experiment, re-imagining some of their greatest heroes in the 21st century, beginning with Spider-Man! Writer Brian\u00a0...",
-        "196 \u00d7 293 - 3 collects the paperbacks Ultimate Spider-Man Vol. 5: Public Scrutiny and Ultimate Spider-Man Vol. 6: Venom I'm loving Marvel's \"Ultimate Collections,\" as well\u00a0...",
-        "312 \u00d7 479 - Read over 75000 comics, graphic novels and manga from publishers such as Marvel, DC, Image, Viz, BOOM, IDW, Top Shelf, and Oni Press on your mobile\u00a0...",
-        "360 \u00d7 553 - Read the book that Entertainment Weekly calls One of the most emotionally resonant depictions of teendom in comics since Spider-Man's debut.",
-        "312 \u00d7 479 - Read the book that Entertainment Weekly calls \"One of the most emotionally resonant depictions of teendom in comics since Spider-Man's debut.\"\u00a0...",
-        "196 \u00d7 293 - 3 (Ultimate Spider-Man (Paperback)) by Brian M Bendis Paperback \u00a317.29 ..... other items: marvel graphic novels, spiderman comic, marvel graphic collection,\u00a0..."
+        "Just put your image size after our URL and you'll get a placeholder image. Like this: http://via.placeholder.com/350x150. You can also use it in your code, like\u00a0...",
+        "Custom URLs generate placeholder pictures in various sizes with categories and effects. ... Use the buttons above to create the type of image you need. You can\u00a0...",
+        "689 \u00d7 300 - Apr 5, 2012 - If you're after a quick and easy way to produce flexible placeholder images for your site, check this out!",
+        "350 \u00d7 150 - Which Image Formats Work? Placeholder work with GIF, JPEG, JPG or PNG formats. Just add an image extension to render the image in the format you want.",
+        "350 \u00d7 150 - Apr 12, 2018 - I want to create an image with dynamic size like placeholder.com, below is the code to create image with golang: width = 350 height = 150 img\u00a0...",
+        "350 \u00d7 150 - Apr 12, 2018 - I want to create an image with dynamic size like placeholder.com, below is the code to create image with golang: width = 350 height = 150 img\u00a0...",
+        "450 \u00d7 150 - Jan 29, 2018 - packed-img-strip is a jQuery responsive equal height plugin which automatically ... 02, < img src = \"http://via.placeholder.com/300x300\" />\u00a0..."
     ],
     "links": [
-        "https://en.wikipedia.org/wiki/Ultimate_Spider-Man",
-        "http://marvel.com/comics/series/466/ultimate_spider-man_2000_-_2009",
-        "https://www.amazon.com/Ultimate-Spider-Man-Collection-Vol/dp/0785124926",
-        "https://www.comixology.com/Ultimate-Spider-Man-Sale/page/8092",
-        "https://comicstore.marvel.com/Ultimate-Spider-Man-2000-2009-1/digital-comic/2679",
-        "https://www.comixology.com/Ultimate-Spider-Man-2000-2009/comics-series/1094",
-        "https://www.amazon.co.uk/Ultimate-Spider-Man-Collection-TPB-v/dp/0785124926"
+        "https://placeholder.com/",
+        "https://placeimg.com/",
+        "https://premium.wpmudev.org/blog/image-placeholder/",
+        "https://digital.com/tools/placeholder-images/",
+        "https://stackoverflow.com/questions/49787206/draw-number-like-placeholder-com-with-golang",
+        "https://stackoverflow.com/questions/49787206/draw-number-like-placeholder-com-with-golang?noredirect=1&lq=1",
+        "https://www.jqueryscript.net/layout/jQuery-Responsive-Equal-Height-Images.html"
     ],
     "resized_images": [
         {
-            "id": "WyIaTW6xpcGLHM:",
-            "isu": "londongraphicnovelnetwork.com",
+            "cb": 21,
+            "cl": 21,
+            "cr": 21,
+            "ct": 21,
+            "id": "6aNqqL0gKIoXoM:",
+            "isu": "demos1.softaculous.com",
+            "itg": 0,
+            "ity": "",
+            "oh": 540,
+            "ou": "https://placehold.it/1900x540&text=Slide%20One",
+            "ow": 1900,
+            "pt": "CSZ Home | CSZ CMS Starter",
+            "rh": "demos1.softaculous.com",
+            "rid": "UG-EsErbGOiH7M",
+            "rt": 0,
+            "ru": "https://demos1.softaculous.com/CSZ_CMS/",
+            "s": "Caption One",
+            "sc": 1,
+            "st": "Softaculous",
+            "th": 119,
+            "tu": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT00elB19-tlgLm8Icu1EgDmpiv1hKh1bJsy699M8r4ezFQHMno2Q",
+            "tw": 422
+        },
+        {
+            "cb": 21,
+            "cl": 21,
+            "cr": 21,
+            "ct": 21,
+            "id": "cESt2PZwCgUg6M:",
+            "isu": "eyurtlar.com",
             "itg": 0,
             "ity": "png",
-            "oh": 1754,
-            "ou": "https://londongraphicnovelnetwork.files.wordpress.com/2017/02/ultimate-spider-man.png",
-            "ow": 1240,
-            "pt": "ultimate-spider-man \u2013 London Graphic Novel Network",
-            "rh": "londongraphicnovelnetwork.com",
-            "rid": "_lKi7qPoEHbuIM",
+            "oh": 701,
+            "ou": "https://www.eyurtlar.com/images/detaygorselyok.png",
+            "ow": 1080,
+            "pt": "Yakamoz Be\u015fikta\u015f K\u0131z \u00d6\u011frenci Yurdu | Eyurtlar.com",
+            "rh": "eyurtlar.com",
+            "rid": "tzcWrjUMKPm9bM",
             "rt": 0,
-            "ru": "https://londongraphicnovelnetwork.com/ultimate-spider-man/",
-            "s": "",
+            "ru": "https://www.eyurtlar.com/istanbul-yakamoz-besiktas-kiz-ogrenci-yurdu/580",
+            "s": "Yakamoz Be\u015fikta\u015f K\u0131z \u00d6\u011frenci Yurdu",
             "sc": 1,
-            "st": "London Graphic Novel Network",
-            "th": 267,
-            "tu": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbPWRhUR_uR_O3_RX9Vmo1gH88ZNgMbwO2Dd1WNQmcdQJJ5CWtIw",
-            "tw": 189
+            "st": "\u0130stanbul \u00d6zel Yurtlar | \u00d6\u011frenci Apart Rehberi",
+            "th": 181,
+            "tu": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9LeeXUjP0b9JYWnk8G_6o5Caf8Rm19gQH3H6UISXQoFGBIrIAcg",
+            "tw": 279
         },
+
+        # 17 more...
+
         {
-            "cl": 6,
-            "cr": 6,
-            "id": "NRAMvOr94h0wTM:",
-            "isu": "empire-dcp-minutemen-scanss.blogspot.com",
+            "cb": 21,
+            "cl": 21,
+            "cr": 21,
+            "ct": 21,
+            "id": "DZMVBEHnNZ1t7M:",
+            "isu": "feedyeti.com",
             "itg": 0,
-            "ity": "jpg",
-            "oh": 1600,
-            "ou": "http://4.bp.blogspot.com/-UcgnDQMlRJQ/VmvbeWNfn-I/AAAAAAAAgKU/PISR1_lCbGM/s1600/Ultimate%2BMarvel%2BUniverse%2B%25282000-2015%2529%2B%2528digital%2529%2B1%2B%2528empire-dcp-minutemen-scans%2529.jpg",
-            "ow": 1079,
-            "pt": "Ultimate Marvel Universe (2000-2015) (digital) (Empire+Minutemen ...",
-            "rh": "empire-dcp-minutemen-scanss.blogspot.com",
-            "rid": "NyIF1MfIWvSuyM",
+            "ity": "",
+            "oh": 302,
+            "ou": "http://cdn.crownmediadev.com/dims4/default/16e50bf/2147483647/thumbnail/704x436%5E/quality/90/?url=http%3A%2F%2Fbrightcove04.o.brightcove.com%2F3388362517001%2F3388362517001_3868818829001_video-still-for-video-3868909161001.jpg%3FpubId%3D3388362517001",
+            "ow": 704,
+            "pt": "Feetloaf on FeedYeti.com",
+            "rh": "feedyeti.com",
+            "rid": "QHJzkyhwHYYHFM",
             "rt": 0,
-            "ru": "http://empire-dcp-minutemen-scanss.blogspot.com/2015/12/ultimate-marvel-universe-2000-2015.html",
-            "s": "Ultimate Marvel Universe (2000-2015) (digital) (Empire+Minutemen)",
-            "st": "Empire-DCP-Minutemen-Scans",
-            "th": 273,
-            "tu": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pAzV_zlgMmebMshViSK6j4bSvui8AXNXeAg3hGowV0JvenVvZA",
-            "tw": 184
-        },
-        {
-            "id": "yjLGtKdE-RxT3M:",
-            "isu": "sohu.com",
-            "itg": 0,
-            "ity": "jpg",
-            "oh": 1567,
-            "ou": "http://img.mp.itc.cn/upload/20170710/ff4310bda8ed440aa2af0c1c0f4b8380_th.jpg",
-            "ow": 1024,
-            "pt": "\u7ec8\u6781\u8718\u86db\u4fa0\u300b01 Powerless_\u641c\u72d0\u52a8\u6f2b_\u641c\u72d0\u7f51",
-            "rh": "sohu.com",
-            "rid": "ugGDVMUvqwNWeM",
-            "rt": 0,
-            "ru": "http://www.sohu.com/a/156040219_723581",
-            "s": "\u300a\u7ec8\u6781\u8718\u86db\u4fa0\u300b01 Powerless",
+            "ru": "https://feedyeti.com/hashtag.php?q=Feetloaf",
+            "s": "... ?url=http%3A%2F%2Fbrightcove04.o.brightcove.com  48HlyYz0hT69uvLAkMM9HDvtjRDKS ...",
             "sc": 1,
-            "st": "\u641c\u72d0",
-            "th": 278,
-            "tu": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0KA6NkE3DJW8heYLotG6Pl8cF-a_JMRQdh5Fc9PWN_hkax9JOhg",
-            "tw": 181
+            "st": "FeedYeti.com",
+            "th": 147,
+            "tu": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW1P4gS0f1JFBrkkUU5_0spEIOwS50OCPxpYSzj47HinRJLCBi1Q",
+            "tw": 343
         }
-
-        # 96 more ...
-
     ],
     "similar_images": [
-        "https://img.thriftbooks.com/api/images/l/e7ada694fcc734d704cf5c4c323d8360b2b73739.jpg",
-        "https://comicbookrealm.com/cover-scan/f1b967e673681c3b9cdbc9c568949344/l/marvel-comics-ultimate-spider-man-collected-edition-issue-1-3rd-print.jpg",
-        "https://images.gr-assets.com/books/1388241273l/105942.jpg",
-        "https://d1466nnw0ex81e.cloudfront.net/n_iv/600/717937.jpg",
-        "https://d1466nnw0ex81e.cloudfront.net/n_iv/600/1248031.jpg",
-        "https://images.gr-assets.com/books/1298500524l/105911.jpg",
-        "https://i.annihil.us/u/prod/marvel/i/mg/9/a0/4bc363388cf7a/portrait_incredible.jpg",
-        "https://comicbookrealm.com/cover-scan/3346d30e69c1ca076656a5b42bfb244e/l/ultimate-marvel-ultimate-spider-man-issue-104b.jpg",
-        "https://d1466nnw0ex81e.cloudfront.net/n_iv/600/1052983.jpg",
-        "http://www.spiderfan.org/comics/images/ultimate_spiderman/019.jpg",
-        "http://cmro.travis-starnes.com/images/ultimate_issues/ultimate_spider_man/054.jpg",
-        "http://www.covernk.com/Covers/L/U/Ultimate%20Spider-Man%202000%20series/UltimateSpider-man8.jpg",
-        "https://images.gr-assets.com/books/1368921699l/105928.jpg",
-        "https://vignette.wikia.nocookie.net/marveldatabase/images/6/66/Ultimate_Spider-Man_Vol_1_16.jpg/revision/latest?cb=20080406152445",
-        "http://images.sequart.org/images/002-b.jpg",
-        "https://d1466nnw0ex81e.cloudfront.net/n_iv/600/872679.jpg",
-        "https://d1466nnw0ex81e.cloudfront.net/n_iv/600/1248033.jpg",
-        "https://images-na.ssl-images-amazon.com/images/I/51Uy6yVHsUL._SX334_BO1,204,203,200_.jpg"
+        "https://via.placeholder.com/350x150",
+        "http://www.dreamlight-music.com/assets/img/demo/g.png",
+        "http://hispaniola.co.uk/wp-content/themes/hispaniola/img/placehold_600%20x%20400.png",
+        "http://dining-delight.com/img/gallery-img-02.jpg",
+        "http://svnit.ac.in/Data/facup/pjengineer/img/gallery/800x600.png",
+        "http://fpoimg.com/600x250/For%20Place%20Only%20Image",
+        "https://topshoes.ua/themes/topshoes_v2/assets/img/i/banner-2-800x600.jpg",
+        "http://www.garywongrealty.com/wp-content/uploads/2017/01/img-placeholder.jpg",
+        "http://geniussys.com/img/placeholder/blogposts-300x220.png",
+        "https://hartford.uconn.edu/wp-content/uploads/sites/2222/2017/07/placeholder-img.jpg"
     ],
     "titles": [
-        "Ultimate Spider-Man - Wikipedia",
-        "Ultimate Spider-Man (2000 - 2009) | Comic Books | Comics | Marvel.com",
-        "Amazon.com: Ultimate Spider-Man: Ultimate Collection, Vol. 1 ...",
-        "Ultimate Spider-Man Sale! - Comics by comiXology",
-        "Ultimate Spider-Man (2000-2009) #1 - Marvel Comics",
-        "Ultimate Spider-Man (2000-2009) Digital Comics - Comics by ...",
-        "Ultimate Spider-Man: Ultimate Collection Volume 1 TPB: Ultimate ..."
+        "Placeholder.com - Quick & Simple Placeholder Images, Text & More",
+        "PlaceIMG | Easy FPO and Dummy Images for Any Project",
+        "Quick Tip: The Easiest Image Placeholder Tool I Have Found - WPMU ...",
+        "Placeholder Images for Webmasters - Digital.com",
+        "image - Draw number like placeholder.com with golang - Stack Overflow",
+        "image - Draw number like placeholder.com with golang - Stack Overflow",
+        "jQuery Plugin For Responsive Equal Height Images - packed-img-strip ..."
     ]
 }
+
 
 ```
 
@@ -339,12 +346,465 @@ Request should contain
 ## CORS Support
 
 ```shell
-
     python src/server.py -c # or --cors
-
 ```
 
 Will enable users to access API from other websites
 
+## Google Cloud Vision API
+
+Visit [this](https://cloud.google.com/vision) page for more details about it.
+
+And have a look at the demo on that page
+
+The returned `json` response can be used to detect:
+
+- Labels from an image
+
+- Visually similar Images
+
+- Text from the image and Where it's located
+    ([ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) languages supported by Google)
+
+- Web entries
+
+- Dominant Colors from the Image
+
+- Safe Search Level
+
+> :warning:
+> Using `"cloud_api":true` will only return data from Google's vision API but no more
+**M**eta **R**everse **I**mage **S**earching
+
+### Request examples
+
+#### CURL Request
+
+```shell
+curl -X POST http://localhost:5000/search \
+    -H "Content-Type: application/json" \
+    -d '{
+        "image_url":
+            "http://placehold.it/350x150.png",
+        "cloud_api":true
+        }'
+```
+
+### Response Format
+
+<details>
+
+<summary>Expand to view</summary>
+
+```shell
+
+{
+  "labelAnnotations": [
+    {
+      "mid": "/m/07s6nbt",
+      "description": "text",
+      "score": 0.9771333,
+      "topicality": 0.9771333
+    },
+
+    # more
+
+  ],
+  "textAnnotations": [
+    {
+      "locale": "en",
+      "description": "350 x 150\n",
+      "boundingPoly": {
+        "vertices": [
+          {
+            "x": 108,
+            "y": 56
+          },
+          # 3 more
+        ]
+      }
+    },
+
+    # more
+  
+  ],
+  "safeSearchAnnotation": {
+    "adult": "VERY_UNLIKELY",
+    "spoof": "VERY_UNLIKELY",
+    "medical": "UNLIKELY",
+    "violence": "VERY_UNLIKELY",
+    "racy": "VERY_UNLIKELY"
+  },
+  "imagePropertiesAnnotation": {
+    "dominantColors": {
+      "colors": [
+        {
+          "color": {
+            "red": 160,
+            "green": 160,
+            "blue": 160
+          },
+          "score": 0.6644681,
+          "pixelFraction": 0.021568628
+        },
+
+        # more
+
+      ]
+    }
+  },
+  "cropHintsAnnotation": {
+    "cropHints": [
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 104
+            },
+            {
+              "x": 226
+            },
+            {
+              "x": 226,
+              "y": 149
+            },
+            {
+              "x": 104,
+              "y": 149
+            }
+          ]
+        },
+        "confidence": 0.79999995,
+        "importanceFraction": 0.79999995
+      },
+
+      # more
+
+    ]
+  },
+  "fullTextAnnotation": {
+    "pages": [
+      {
+        "property": {
+          "detectedLanguages": [
+            {
+              "languageCode": "en",
+              "confidence": 1
+            }
+          ]
+        },
+        "width": 350,
+        "height": 150,
+        "blocks": [
+          {
+            "boundingBox": {
+              "vertices": [
+                {
+                  "x": 108,
+                  "y": 56
+                },
+                # 3 more
+              ]
+            },
+            "paragraphs": [
+              {
+                "boundingBox": {
+                  "vertices": [
+                    {
+                      "x": 108,
+                      "y": 56
+                    },
+                    # 3 more
+                  ]
+                },
+                "words": [
+                  {
+                    "property": {
+                      "detectedLanguages": [
+                        {
+                          "languageCode": "en"
+                        }
+                      ]
+                    },
+                    "boundingBox": {
+                      "vertices": [
+                        {
+                          "x": 108,
+                          "y": 56
+                        },
+                        # 3 more
+                      ]
+                    },
+                    "symbols": [
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "en"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 108,
+                              "y": 56
+                            },
+
+                            # 3 more
+
+                          ]
+                        },
+                        "text": "3",
+                        "confidence": 0.99
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "en"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 121,
+                              "y": 56
+                            },
+
+                            # 3 more
+
+                          ]
+                        },
+                        "text": "5",
+                        "confidence": 0.99
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "en"
+                            }
+                          ],
+                          "detectedBreak": {
+                            "type": "SPACE"
+                          }
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 138,
+                              "y": 56
+                            },
+
+                            # 3 more
+
+                          ]
+                        },
+                        "text": "0",
+                        "confidence": 1
+                      }
+                    ],
+                    "confidence": 0.99
+                  },
+                  {
+                    "property": {
+                      "detectedLanguages": [
+                        {
+                          "languageCode": "en"
+                        }
+                      ]
+                    },
+                    "boundingBox": {
+                      "vertices": [
+                        {
+                          "x": 165,
+                          "y": 56
+                        },
+
+                        # 3 more
+
+                      ]
+                    },
+                    "symbols": [
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "en"
+                            }
+                          ],
+                          "detectedBreak": {
+                            "type": "SPACE"
+                          }
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 165,
+                              "y": 56
+                            },
+                            # 3 more
+
+                          ]
+                        },
+                        "text": "x",
+                        "confidence": 0.99
+                      }
+                    ],
+                    "confidence": 0.99
+                  },
+                  {
+                    "property": {
+                      "detectedLanguages": [
+                        {
+                          "languageCode": "en"
+                        }
+                      ]
+                    },
+                    "boundingBox": {
+                      "vertices": [
+                        {
+                          "x": 190,
+                          "y": 56
+                        },
+                        # 3 more
+                      ]
+                    },
+                    "symbols": [
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "en"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 190,
+                              "y": 56
+                            },
+                            # 3 more
+                          ]
+                        },
+                        "text": "1",
+                        "confidence": 1
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "en"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 208,
+                              "y": 56
+                            },
+                            # 3 more
+                          ]
+                        },
+                        "text": "5",
+                        "confidence": 0.99
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "en"
+                            }
+                          ],
+                          "detectedBreak": {
+                            "type": "LINE_BREAK"
+                          }
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 226,
+                              "y": 56
+                            },
+                            # 3 more
+                          ]
+                        },
+                        "text": "0",
+                        "confidence": 1
+                      }
+                    ],
+                    "confidence": 0.99
+                  }
+                ],
+                "confidence": 0.99
+              }
+            ],
+            "blockType": "TEXT",
+            "confidence": 0.99
+          }
+        ]
+      }
+    ],
+    "text": "350 x 150\n"
+  },
+  "webDetection": {
+    "webEntities": [
+      {
+        "entityId": "/m/0jg24",
+        "score": 0.7001,
+        "description": "Image"
+      },
+
+    #more
+
+    ],
+    "fullMatchingImages": [
+      {
+        "url": "http://placehold.it/1920x750?text=G%C3%B6rsel+Yok"
+      },
+
+    # more
+
+    ],
+    "pagesWithMatchingImages": [
+      {
+        "url": "https://placeholder.com/",
+        "pageTitle": "Placeholder.com - Quick &amp;amp; Simple &lt;b&gt;Placeholder Images&lt;/b&gt;, Text &amp;amp; More",
+        "fullMatchingImages": [
+          {
+            "url": "https://via.placeholder.com/350x150"
+          }
+        ]
+      },
+
+    #more
+
+    ],
+    "visuallySimilarImages": [
+      {
+        "url": "https://via.placeholder.com/350x150"
+      },
+
+    #more
+
+    ],
+    "bestGuessLabels": [
+      {
+        "label": "placeholder img",
+        "languageCode": "en"
+      }
+    ]
+  }
+}
+
+```
+
+</details>
+
+### Google Cloud Shell
 
 [![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fphanirithvij%2Fmrisa&page=editor)
