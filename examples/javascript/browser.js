@@ -6,7 +6,7 @@ xhr.open('POST',"http://localhost:5000/search");
 xhr.setRequestHeader("Content-Type","application/json");
 
 data= {
-        "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
+        "image_url":"http://via.placeholder.com/350x150.png",
         "resized_images":false // Or true
     };
 
