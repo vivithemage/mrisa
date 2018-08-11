@@ -3,8 +3,8 @@ import requests, json
 url = "http://localhost:5000/search"
 
 data = {
-    "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
-    "resized_images":False # Or true
+    "image_url":"http://placehold.it/350x150.png",
+    "resized_images":True # Or true
 }
 
 

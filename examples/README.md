@@ -18,7 +18,6 @@
 
 [Perl](https://github.com/phanirithvij/mrisa/tree/master/examples#perl)
 
-
 ## Curl
 
 ```shell
@@ -40,7 +39,7 @@ import requests, json
 url = "http://localhost:5000/search"
 
 data = {
-    "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
+    "image_url":"http://placehold.it/350x150.png",
     "resized_images":False # Or true
 }
 
@@ -92,7 +91,7 @@ xhr.open('POST',"http://localhost:5000/search");
 xhr.setRequestHeader("Content-Type","application/json");
 
 data= {
-        "image_url":"http://2.bp.blogspot.com/-pZsU4tr2gS8/VnpucHNahCI/AAAAAAAAPjI/bdwQMlqzHxw/s0-Ic42/RCO001.jpg",
+        "image_url":"http://placehold.it/350x150.png",
         "resized_images":false // Or true
     };
 
@@ -116,54 +115,57 @@ var gotDetails = () => {
 package main
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
 )
 
 // Payload : json struct
 type Payload struct {
-	ImageURL      string `json:"image_url"`
-	ResizedImages bool   `json:"resized_images"`
+    ImageURL      string `json:"image_url"`
+    ResizedImages bool   `json:"resized_images"`
 }
 
 func main() {
-	data := Payload{
-		// fill struct
-		ImageURL:      "http://placehold.it/350x150.png",
-		ResizedImages: false,
-	}
+    data := Payload{
+        // fill struct
+        ImageURL:      "http://placehold.it/350x150.png",
+        ResizedImages: false,
+    }
 
-	payloadBytes, err := json.Marshal(data)
-	if err != nil {
-		// handle err
-		fmt.Println("error:>", err)
-	}
-	body := bytes.NewReader(payloadBytes)
+    payloadBytes, err := json.Marshal(data)
 
-	req, err := http.NewRequest("POST", "http://localhost:5000/search", body)
-	if err != nil {
-		// handle err
-		fmt.Println("error:>", err)
-	}
+    if err != nil {
+        // handle err
+        fmt.Println("error:>", err)
+    }
 
-	req.Header.Set("Content-Type", "application/json")
+    body := bytes.NewReader(payloadBytes)
 
-	resp, err := http.DefaultClient.Do(req)
+    req, err := http.NewRequest("POST", "http://localhost:5000/search", body)
 
-	if err != nil {
-		// handle err
-	}
+    if err != nil {
+        // handle err
+        fmt.Println("error:>", err)
+    }
 
-	if resp.StatusCode == http.StatusOK {
-		bodyBytes, _ := ioutil.ReadAll(resp.Body)
-		bodyString := string(bodyBytes)
-		fmt.Println(bodyString)
-	}
+    req.Header.Set("Content-Type", "application/json")
 
-	defer resp.Body.Close()
+    resp, err := http.DefaultClient.Do(req)
+
+    if err != nil {
+        // handle err
+    }
+
+    if resp.StatusCode == http.StatusOK {
+        bodyBytes, _ := ioutil.ReadAll(resp.Body)
+        bodyString := string(bodyBytes)
+        fmt.Println(bodyString)
+    }
+
+    defer resp.Body.Close()
 }
 
 ```
