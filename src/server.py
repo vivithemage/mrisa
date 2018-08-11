@@ -33,10 +33,10 @@ def search():
 
     else:
         code = doImageSearch(SEARCH_URL + client_data['image_url'])
-        
+
         if 'resized_images' in client_data and client_data['resized_images'] == True:
             return parseResults(code, resized=True)
-        else:        
+        else:
             return parseResults(code)
 
 def doImageSearch(full_url):
@@ -57,7 +57,7 @@ def doImageSearch(full_url):
         conn.setopt(conn.CAINFO, certifi.where())
     conn.setopt(conn.URL, str(full_url))
     conn.setopt(conn.FOLLOWLOCATION, 1)
-    conn.setopt(conn.USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11')
+    conn.setopt(conn.USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0')
     conn.setopt(conn.WRITEFUNCTION, returned_code.write)
     conn.perform()
     conn.close()
@@ -132,13 +132,13 @@ def getDifferentSizes(soup):
         'rt': 'UNKNOWN TERM',
         'isu': 'resource_host', # (UNKNOWN TERM)
     }
-      
+
     """
 
     region = soup.find('div',{"class":"O1id0e"})
 
     span = region.find('span',{"class":"gl"})
-    
+
     allsizes = False
 
     try:
@@ -179,7 +179,7 @@ def main():
 
     if args.debug:
         app.debug = True
-    
+
     if args.cors:
         CORS(app, resources=r'/search/*')
         app.config['CORS_HEADERS'] = 'Content-Type'
@@ -190,6 +190,6 @@ def main():
 
 
     app.run(host='0.0.0.0', port=args.port)
-    
+
 if __name__ == '__main__':
     main()
