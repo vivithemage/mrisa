@@ -48,7 +48,7 @@ curl -X POST http://localhost:5000/search \
     -d '{
         "image_url":
             "http://placehold.it/350x150.png",
-        "resized_images":true
+        "resized_images":false
         }'
 ```
 
@@ -90,7 +90,7 @@ url = "http://localhost:5000/search"
 
 data = {
     "image_url":"http://placehold.it/350x150.png",
-    "resized_images":True, # Or False
+    "resized_images":False, # Or True
     "cloud_api":True
 }
 
@@ -312,7 +312,7 @@ URLs of similar images (According to [Google](https://google.com))
 
 List of titles from different sources (Related to that Image)
 
-## Resized Images (The [same](https://github.com/phanirithvij/mrisa#arguments) Image in different Sizes and from different Sources)
+## Resized Images (The [same](https://github.com/vivithemage/mrisa#arguments) Image in different Sizes and from different Sources)
 
 Request should contain
 
@@ -322,7 +322,7 @@ Request should contain
 
 ```
 
-[Usage Example](https://github.com/phanirithvij/mrisa#curl)
+[Usage Example](https://github.com/vivithemage/mrisa#curl)
 
 ```python
 "resized_images"
@@ -433,7 +433,7 @@ curl -X POST http://localhost:5000/search \
     },
 
     # more
-  
+
   ],
   "safeSearchAnnotation": {
     "adult": "VERY_UNLIKELY",
@@ -814,4 +814,4 @@ curl -X POST http://localhost:5000/search \
 
 ### Google Cloud Shell
 
-[![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fphanirithvij%2Fmrisa&page=editor)
+[![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fvivithemage%2Fmrisa&page=editor)
