@@ -48,7 +48,7 @@ curl -X POST http://localhost:5000/search \
     -d '{
         "image_url":
             "http://placehold.it/350x150.png",
-        "resized_images":true
+        "resized_images":false
         }'
 ```
 
@@ -90,7 +90,7 @@ url = "http://localhost:5000/search"
 
 data = {
     "image_url":"http://placehold.it/350x150.png",
-    "resized_images":True, # Or False
+    "resized_images":False, # Or True
     "cloud_api":True
 }
 
@@ -433,7 +433,7 @@ curl -X POST http://localhost:5000/search \
     },
 
     # more
-  
+
   ],
   "safeSearchAnnotation": {
     "adult": "VERY_UNLIKELY",
