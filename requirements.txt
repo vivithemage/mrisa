@@ -4,3 +4,4 @@ beautifulsoup4==4.6.0
 flask_cors==3.0.6
 certifi==2018.4.16
 requests==2.19.1
+lxml==4.2.4
