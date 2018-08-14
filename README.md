@@ -9,13 +9,13 @@ MRISA (**M**eta **R**everse **I**mage **S**earch **A**PI) is a RESTful API which
 Install the necessary dependencies:
 
 ```shell
-pip install certifi flask pycurl beautifulsoup4 flask_cors
+pip install -r requirements.txt
 ```
 
 Or
 
 ```shell
-pip install -r requirements.txt
+pip install certifi flask pycurl beautifulsoup4 flask_cors requests lxml
 ```
 
 Start the server with:
