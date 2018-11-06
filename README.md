@@ -1,3 +1,7 @@
+<h1 align=center>
+<img src="logo/256.png" width=20%>
+</h1>
+
 # MRISA
 
 ---
