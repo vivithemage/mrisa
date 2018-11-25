@@ -10,15 +10,19 @@ import (
 
 // Payload : json struct
 type Payload struct {
-	ImageURL      string `json:"image_url"`
-	ResizedImages bool   `json:"resized_images"`
+	ImageURL       string `json:"image_url"`
+	ResizedImages  bool   `json:"resized_images"`
+	Pinterest      bool   `json:"pinterest"`
+	GoogleCloudApi bool   `json:"cloud_api"`
 }
 
 func main() {
 	data := Payload{
 		// fill struct
-		ImageURL:      "http://placehold.it/350x150.png",
-		ResizedImages: false,
+		ImageURL:       "https://res.cloudinary.com/rootworld/image/upload/v1537635091/dd4d46e7f543b322371b37683cd05ebbbddbf1f7_hq.jpg",
+		ResizedImages:  false,
+		GoogleCloudApi: true,
+		Pinterest:      true,
 	}
 
 	payloadBytes, err := json.Marshal(data)
@@ -45,6 +49,7 @@ func main() {
 	if resp.StatusCode == http.StatusOK {
 		bodyBytes, _ := ioutil.ReadAll(resp.Body)
 		bodyString := string(bodyBytes)
+		// fmt.Println(json.NewDecoder(resp.Body))
 		fmt.Println(bodyString)
 	}
 

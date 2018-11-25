@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 if python3:
     import certifi
 from googlecloudapi import getCloudAPIDetails, saveImage
+from pinterest import get_resp as pinterest_
 
 SEARCH_URL = 'https://www.google.com/searchbyimage?&image_url='
 
@@ -22,22 +23,33 @@ app = Flask(__name__)
 @app.route('/search', methods = ['POST'])
 def search():
     if request.headers['Content-Type'] != 'application/json':
-        return "Requests must be in JSON format. Please make sure the header is 'application/json' and the JSON is valid."
+        return jsonify(err="Requests must be in JSON format. Please make sure the header is 'application/json' and the JSON is valid.")
     client_json = json.dumps(request.json)
     client_data = json.loads(client_json)
 
+    response = {'data':{},'error':False}
+
     if 'cloud_api' in client_data and client_data['cloud_api'] == True:
+        # If cloud API
         saveImage(client_data['image_url'])
         data = getCloudAPIDetails("./default.jpg")
-        return jsonify(data)
+        print(data)
+        response['data']['cloud_api'] = data
+        # response['error'] = True # If fails
 
     else:
+        # IF NOT Cloud API do a normal bs4 search
         code = doImageSearch(SEARCH_URL + client_data['image_url'])
 
         if 'resized_images' in client_data and client_data['resized_images'] == True:
-            return parseResults(code, resized=True)
+            response['data']['results'] = parseResults(code, resized=True)
         else:
-            return parseResults(code)
+            response['data']['results'] = parseResults(code)
+
+    if 'pinterest' in client_data and client_data['pinterest'] == True:
+        response['data']['pinterest'] = pinterest_(client_data['image_url'])
+    # print(jsonify(response))
+    return jsonify(response)
 
 def doImageSearch(full_url):
     # Directly passing full_url

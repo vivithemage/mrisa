@@ -1,3 +1,6 @@
+"""
+Utils to convert image into a base64 string
+"""
 import base64
 
 def basesix4(file):

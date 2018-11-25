@@ -812,6 +812,209 @@ curl -X POST http://localhost:5000/search \
 
 </details>
 
+### Pinterest Image search
+
+Pinterest Image search is also supported
+
+#### Usage
+
+```javascript
+{
+  ...,
+  pinterest: true // option when sending the request
+}
+```
+
+#### Response format
+
+```shell
+{
+  "annotations": [],
+  "bookmark": str,
+  "code": int,
+  "data": [
+      {
+        "attribution": null,
+        "cacheable_id": str,
+        "comment_count": int,
+        "created_at": str (timestamp),
+        "description": str,
+        "domain": str,
+        "id": str,
+        "image_large_size_pixels": {
+            "height": int,
+            "width": int
+        },
+        "image_large_size_points": {
+            "height": int,
+            "width": int
+        },
+        "image_large_url": str,
+        "image_medium_size_pixels": {
+            "height": int,
+            "width": int
+        },
+        "image_medium_size_points": {
+            "height": int,
+            "width": int
+        },
+        "image_medium_url": str,
+        "image_square_size_pixels": {
+            "height": int,
+            "width": int
+        },
+        "image_square_size_points": {
+            "height": int,
+            "width": int
+        },
+        "image_square_url": str,
+        "is_downstream_promotion": bool,
+        "is_playable": bool,
+        "is_repin": bool,
+        "is_uploaded": bool,
+        "is_video": bool,
+        "link": str,
+        "price_currency": "USD",
+        "price_value": float,
+        "promoter": null,
+        "repin_count": int,
+        "title": "",
+        "tracked_link": str,
+        "tracking_params": str,
+        "type": "pin"
+    },
+  ],
+  "message": "ok",
+  "search_identifier": str,
+  "status": "success"
+}
+
+```
+
+Example response (stripped down)
+
+<details>
+<summary>Expand to see the response example</summary>
+
+```shell
+{
+  "annotations": [
+      "gravity falls"
+  ],
+  "bookmark": "Pz8yNV92UDhaaUplVnI3bmpUd3dGOUxMYmhTfDcyNDQzOWNlMGY5OTM1NTJlNTQ5NWNiYTcyMzQzYjg3NDdjYzg4MDI3MGRmOWVmZWY0NmIyYjIyZDdlYjY2YWM=",
+  "code": 0,
+  "data": [
+      {
+          "attribution": null,
+          "cacheable_id": "155303887153027468",
+          "comment_count": 0,
+          "created_at": "Wed, 25 Jul 2018 02:07:41 +0000",
+          "description": "Buy 2 Get 1 Free! Digital Clipart \"Toy Story\" cartoon characters Disney, fantastic party friends, dr",
+          "domain": "etsy.com",
+          "id": "155303887153027468",
+          "image_large_size_pixels": {
+              "height": 570,
+              "width": 570
+          },
+          "image_large_size_points": {
+              "height": 570,
+              "width": 570
+          },
+          "image_large_url": "https://i.pinimg.com/1200x/bc/ae/54/bcae54f0629bbf3f33ce9f28c32b1da8.jpg",
+          "image_medium_size_pixels": {
+              "height": 200,
+              "width": 200
+          },
+          "image_medium_size_points": {
+              "height": 200,
+              "width": 200
+          },
+          "image_medium_url": "https://i.pinimg.com/200x/bc/ae/54/bcae54f0629bbf3f33ce9f28c32b1da8.jpg",
+          "image_square_size_pixels": {
+              "height": 45,
+              "width": 45
+          },
+          "image_square_size_points": {
+              "height": 45,
+              "width": 45
+          },
+          "image_square_url": "https://i.pinimg.com/45x45/bc/ae/54/bcae54f0629bbf3f33ce9f28c32b1da8.jpg",
+          "is_downstream_promotion": false,
+          "is_playable": false,
+          "is_repin": false,
+          "is_uploaded": false,
+          "is_video": false,
+          "link": "https://www.etsy.com/listing/223974583/buy-2-get-1-free-digital-clipart-toy",
+          "price_currency": "USD",
+          "price_value": 0.0,
+          "promoter": null,
+          "repin_count": 3,
+          "title": "",
+          "tracked_link": "https://www.etsy.com/listing/223974583/buy-2-get-1-free-digital-clipart-toy",
+          "tracking_params": "CwABAAAADDA5Mzk1NTIzMTM2NQA",
+          "type": "pin"
+      },
+      {
+          "attribution": null,
+          "cacheable_id": "571183165291967301",
+          "comment_count": 0,
+          "created_at": "Mon, 06 Aug 2018 21:13:03 +0000",
+          "description": "#eBayDecorative Decals Home, Furniture & DIY",
+          "domain": "rover.ebay.com",
+          "id": "571183165291967301",
+          "image_large_size_pixels": {
+              "height": 900,
+              "width": 600
+          },
+          "image_large_size_points": {
+              "height": 900,
+              "width": 600
+          },
+          "image_large_url": "https://i.pinimg.com/1200x/3f/cd/4c/3fcd4c01c641a8538f707ca6ec164723.jpg",
+          "image_medium_size_pixels": {
+              "height": 300,
+              "width": 200
+          },
+          "image_medium_size_points": {
+              "height": 300,
+              "width": 200
+          },
+          "image_medium_url": "https://i.pinimg.com/200x/3f/cd/4c/3fcd4c01c641a8538f707ca6ec164723.jpg",
+          "image_square_size_pixels": {
+              "height": 45,
+              "width": 45
+          },
+          "image_square_size_points": {
+              "height": 45,
+              "width": 45
+          },
+          "image_square_url": "https://i.pinimg.com/45x45/3f/cd/4c/3fcd4c01c641a8538f707ca6ec164723.jpg",
+          "is_downstream_promotion": false,
+          "is_playable": false,
+          "is_repin": false,
+          "is_uploaded": false,
+          "is_video": false,
+          "link": "https://rover.ebay.com/rover/1/710-142367-44799-2/16?mpre=https://www.ebay.co.uk/i/181484628664",
+          "price_currency": "USD",
+          "price_value": 0.0,
+          "promoter": null,
+          "repin_count": 0,
+          "title": "",
+          "tracked_link": "https://rover.ebay.com/rover/1/710-142367-44799-2/16?mpre=https://www.ebay.co.uk/i/181484628664",
+          "tracking_params": "CwABAAAADDA5Mzk1NTIzMTM2NQA",
+          "type": "pin"
+      },
+      # 22 more
+  ],
+  "message": "ok",
+  "search_identifier": "vP8ZiJeVr7njTwwF9LLbhS",
+  "status": "success"
+}
+
+```
+
+</details>
+
 ### Google Cloud Shell
 
 [![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fvivithemage%2Fmrisa&page=editor)

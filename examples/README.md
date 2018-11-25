@@ -67,9 +67,11 @@ var options = {
         'Content-Type':'application/json'
     },
     json : {
-        "image_url":"http://placehold.it/350x150.png",
-        "resized_images":false // Or true
-        }
+        image_url:"http://placehold.it/350x150.png",
+        resized_images:false, // Or true
+        cloud_api: true, // or false
+        pinterest: true,
+    }
 };
 
 request(options,(_err,_res,body)=>{
@@ -91,8 +93,10 @@ xhr.open('POST',"http://localhost:5000/search");
 xhr.setRequestHeader("Content-Type","application/json");
 
 data= {
-        "image_url":"http://placehold.it/350x150.png",
-        "resized_images":false // Or true
+        image_url:"http://placehold.it/350x150.png",
+        resized_images:false, // Or true
+        cloud_api: true, // or false
+        pinterest: true,
     };
 
 json = JSON.stringify(data);
@@ -124,28 +128,29 @@ import (
 
 // Payload : json struct
 type Payload struct {
-    ImageURL      string `json:"image_url"`
-    ResizedImages bool   `json:"resized_images"`
+    ImageURL       string `json:"image_url"`
+    ResizedImages  bool   `json:"resized_images"`
+    Pinterest      bool   `json:"pinterest"`
+    GoogleCloudApi bool   `json:"cloud_api"`
 }
 
 func main() {
     data := Payload{
         // fill struct
-        ImageURL:      "http://placehold.it/350x150.png",
-        ResizedImages: false,
+        ImageURL:       "https://res.cloudinary.com/rootworld/image/upload/v1537635091/dd4d46e7f543b322371b37683cd05ebbbddbf1f7_hq.jpg",
+        ResizedImages:  false,
+        GoogleCloudApi: true,
+        Pinterest:      true,
     }
 
     payloadBytes, err := json.Marshal(data)
-
     if err != nil {
         // handle err
         fmt.Println("error:>", err)
     }
-
     body := bytes.NewReader(payloadBytes)
 
     req, err := http.NewRequest("POST", "http://localhost:5000/search", body)
-
     if err != nil {
         // handle err
         fmt.Println("error:>", err)
