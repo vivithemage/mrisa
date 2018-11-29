@@ -1,3 +1,7 @@
+<h1 align=center>
+<img src="logo/256.png" width=20%>
+</h1>
+
 # MRISA
 
 ---
@@ -9,13 +13,13 @@ MRISA (**M**eta **R**everse **I**mage **S**earch **A**PI) is a RESTful API which
 Install the necessary dependencies:
 
 ```shell
-pip install certifi flask pycurl beautifulsoup4 flask_cors
+pip install -r requirements.txt
 ```
 
 Or
 
 ```shell
-pip install -r requirements.txt
+pip install certifi flask pycurl beautifulsoup4 flask_cors requests lxml
 ```
 
 Start the server with:
@@ -32,7 +36,7 @@ Performs a reverse image search using the supplied image URL as input.
 
 ### URL
 
-- *[http://localhost/search/](http://localhost/search/)*
+- *<http://localhost:5000/search/>*
 
 ### Arguments
 

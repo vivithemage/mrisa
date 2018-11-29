@@ -15,7 +15,7 @@ if python3:
 from googlecloudapi import getCloudAPIDetails, saveImage
 from pinterest import get_resp as pinterest_
 
-SEARCH_URL = 'https://www.google.com/searchbyimage?&image_url='
+SEARCH_URL = 'https://www.google.com/searchbyimage?hl=en-US&image_url='
 
 app = Flask(__name__)
 
