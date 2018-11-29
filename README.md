@@ -316,7 +316,7 @@ URLs of similar images (According to [Google](https://google.com))
 
 List of titles from different sources (Related to that Image)
 
-## Resized Images (The [same](https://github.com/vivithemage/mrisa#arguments) Image in different Sizes and from different Sources)
+## Resized Images (The [same](#arguments) Image in different Sizes and from different Sources)
 
 Request should contain
 
@@ -326,7 +326,7 @@ Request should contain
 
 ```
 
-[Usage Example](https://github.com/vivithemage/mrisa#curl)
+[Usage Example](#curl)
 
 ```python
 "resized_images"

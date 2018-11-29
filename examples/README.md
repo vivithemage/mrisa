@@ -1,22 +1,22 @@
 # Examples of requests in different languages
 
-[Curl](https://github.com/phanirithvij/mrisa/tree/master/examples#curl)
+[Curl](#curl)
 
-[Python](https://github.com/phanirithvij/mrisa/tree/master/examples#python)
+[Python](#python)
 
-[Javascript](https://github.com/phanirithvij/mrisa/tree/master/examples#javascript)
+[Javascript](#javascript)
 
-[NodeJs](https://github.com/phanirithvij/mrisa/tree/master/examples#nodejs)
+[NodeJs](#nodejs)
 
-[Browser](https://github.com/phanirithvij/mrisa/tree/master/examples#browser)
+[Browser](#browser)
 
-[Golang](https://github.com/phanirithvij/mrisa/tree/master/examples#golang)
+[Golang](#golang)
 
-[PHP](https://github.com/phanirithvij/mrisa/tree/master/examples#php)
+[PHP](#php)
 
-[Ruby](https://github.com/phanirithvij/mrisa/tree/master/examples#ruby)
+[Ruby](#ruby)
 
-[Perl](https://github.com/phanirithvij/mrisa/tree/master/examples#perl)
+[Perl](#perl)
 
 ## Curl
 
