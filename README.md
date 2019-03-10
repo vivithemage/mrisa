@@ -36,7 +36,7 @@ Performs a reverse image search using the supplied image URL as input.
 
 ### URL
 
-- *<http://localhost:5000/search/>*
+- POST to *<http://localhost:5000/search>*
 
 ### Arguments
 
