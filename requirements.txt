@@ -1,5 +1,4 @@
 Flask==0.12.3
-pycurl==7.19.5
 beautifulsoup4==4.6.0
 flask_cors==3.0.6
 certifi==2018.4.16
