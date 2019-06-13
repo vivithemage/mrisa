@@ -1,5 +1,4 @@
 import argparse
-import pycurl
 import json
 from flask import Flask, url_for, jsonify, request
 from flask_cors import CORS, cross_origin
