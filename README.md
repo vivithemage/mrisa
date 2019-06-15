@@ -1,6 +1,4 @@
-<h1 align=center>
-<img src="logo/256.png" width=20%>
-</h1>
+![Mrisa Logo](logo/256.png)
 
 # MRISA
 
@@ -27,7 +25,12 @@ Start the server with:
 ```shell
 python src/server.py
 ```
+There is also a docker image. Please note that this is a work in progress and any amends/fixes would be most welcome (Dockerfile is in the project root)
 
+```shell
+docker build -t "vivithemage/mrisa:latest" .
+docker run -p 5000:5000 mrisa python mrisa/src/server.py
+```
 ## API
 
 ### Perform a Reverse Image Search
