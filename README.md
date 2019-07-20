@@ -822,3 +822,7 @@ curl -X POST http://localhost:5000/search \
 ### Google Cloud Shell
 
 [![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fvivithemage%2Fmrisa&page=editor)
+
+# Questions
+
+If you have any questions, please don't hesitate to ask in the issues section.
