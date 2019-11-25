@@ -1,4 +1,4 @@
-Flask==0.12.3
+Flask==1.0
 beautifulsoup4==4.6.0
 pycurl==7.19.5
 flask_cors==3.0.6
