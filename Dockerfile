@@ -1,18 +1,12 @@
-FROM ubuntu:18.04
+FROM python:3.7.5-buster
 
-ENV VIRTUAL_ENV=/opt/venv
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+WORKDIR /usr/src/app
 
-## Remain current
-RUN apt-get update -qq \
-	&& apt-get dist-upgrade -y
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN apt-get install git python3 virtualenv -y
-RUN git clone https://github.com/vivithemage/mrisa.git && \
-    cd mrisa && \
-    python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV && \
-    pip install -r requirements.txt;
+COPY ./src .
 
-RUN cd mrisa && python src/server.py
+CMD [ "python", "./server.py" ]
 
 EXPOSE 5000
