@@ -1,0 +1,17 @@
+name: Publish Docker
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+    - name: Build Image
+      run: |
+       docker login -u ${{ secrets.USERNAME }} --password ${{ secrets.DOCKER_TOKEN }}
+       docker build -t mrisa:${{ steps.extract_branch.outputs.branch }} .
+       docker tag mrisa:${{ steps.extract_branch.outputs.branch }} ${{ secrets.USERNAME }}/mrisa:${{ steps.extract_branch.outputs.branch }}
+       docker push ${{ secrets.USERNAME }}/mrisa:${{ steps.extract_branch.outputs.branch }}
