@@ -31,6 +31,22 @@ There is also a docker image. Please note that this is a work in progress and an
 docker build -t "vivithemage/mrisa:latest" .
 docker run -p 5000:5000 mrisa python mrisa/src/server.py
 ```
+
+### Any issues with pycurl or lxml
+
+If you have any issues relating to pycurl, it's likely dependancies are required.
+
+```shell
+sudo apt install libcurl4-openssl-dev libssl-dev
+```
+
+That's also the case for lxml.
+
+```shell
+sudo apt-get install libxml2-dev libxslt1-dev
+```
+Please note, these commands for apt based systems only so you will need to find the equivalents for other packaging systems.
+
 ## API
 
 ### Perform a Reverse Image Search
@@ -822,6 +838,10 @@ curl -X POST http://localhost:5000/search \
 ### Google Cloud Shell
 
 [![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fvivithemage%2Fmrisa&page=editor)
+
+# Contributing
+
+Any contributions are always welcome, so if you have made any improvemnts don't hesitate to get in touch - I don't bite :).
 
 # Questions
 
