@@ -1,6 +1,6 @@
 import argparse
-import pycurl
 import json
+import pycurl
 from flask import Flask, url_for, jsonify, request
 from flask_cors import CORS, cross_origin
 python3 = False
@@ -187,6 +187,7 @@ def main():
     parser.add_argument('-p', '--port', type=int, default=5000, help='port number')
     parser.add_argument('-d','--debug', action='store_true', help='enable debug mode')
     parser.add_argument('-c','--cors', action='store_true', default=False, help="enable cross-origin requests")
+    parser.add_argument('-a', '--host', type=str, default='0.0.0.0', help="sets the address to serve on")
     args = parser.parse_args()
 
     if args.debug:
@@ -201,7 +202,7 @@ def main():
         print(" * Running with CORS enabled")
 
 
-    app.run(host='0.0.0.0', port=args.port)
+    app.run(host=args.host, port=args.port)
 
 if __name__ == '__main__':
     main()

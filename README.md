@@ -1,6 +1,4 @@
-<h1 align=center>
-<img src="logo/256.png" width=20%>
-</h1>
+![Mrisa Logo](logo/256.png)
 
 # MRISA
 
@@ -27,6 +25,27 @@ Start the server with:
 ```shell
 python src/server.py
 ```
+There is also a docker image. Please note that this is a work in progress and any amends/fixes would be most welcome (Dockerfile is in the project root)
+
+```shell
+docker build -t "vivithemage/mrisa:latest" .
+docker run -p 5000:5000 mrisa python mrisa/src/server.py
+```
+
+### Any issues with pycurl or lxml
+
+If you have any issues relating to pycurl, it's likely dependancies are required.
+
+```shell
+sudo apt install libcurl4-openssl-dev libssl-dev
+```
+
+That's also the case for lxml.
+
+```shell
+sudo apt-get install libxml2-dev libxslt1-dev
+```
+Please note, these commands for apt based systems only so you will need to find the equivalents for other packaging systems.
 
 ## API
 
@@ -36,7 +55,7 @@ Performs a reverse image search using the supplied image URL as input.
 
 ### URL
 
-- *<http://localhost:5000/search/>*
+- POST to *<http://localhost:5000/search>*
 
 ### Arguments
 
@@ -1022,3 +1041,11 @@ Example response (stripped down)
 ### Google Cloud Shell
 
 [![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/open?git_repo=https%3A%2F%2Fgithub.com%2Fvivithemage%2Fmrisa&page=editor)
+
+# Contributing
+
+Any contributions are always welcome, so if you have made any improvemnts don't hesitate to get in touch - I don't bite :).
+
+# Questions
+
+If you have any questions, please don't hesitate to ask in the issues section.
