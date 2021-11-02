@@ -9,5 +9,5 @@ def basesix4(file):
     return encoded_string
 
 if __name__ == "__main__":
-    file = "/home/phani/Projects/manga-dl/Manga/One Punch-Man/vol_000/000_Dh.hKccXTrF.mri.webp"
+    file = "/home/test/example.jpg"
     print(basesix4(file)[:70])
