@@ -9,5 +9,5 @@ def basesix4(file):
     return encoded_string
 
 if __name__ == "__main__":
-    file = "/home/test/example.jpg"
+    file = "./default.jpg"
     print(basesix4(file)[:70])
