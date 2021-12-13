@@ -4,4 +4,4 @@ pycurl==7.19.5
 flask_cors==3.0.9
 certifi==2018.4.16
 requests==2.20.0
-lxml==4.6.3
+lxml==4.6.5
